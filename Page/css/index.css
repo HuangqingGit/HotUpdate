@@ -1,0 +1,89 @@
+[v-cloak] {
+display: none;
+}
+
+/*主BOX控制*/
+#UP_main{
+    width: 100%;
+}
+
+/*遮罩*/
+.shade{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    font-size: 18px;
+    padding: 10px 5px;
+}
+
+.popup{
+    width: 300px;
+    height: 500px;
+    background: #F40;
+}
+
+/*Title盒子控制*/
+.UP_title_box{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.title{
+    font-size: 30px;
+    padding: 5px;
+}
+
+.now_version{
+    padding: 0 7px;
+    font-size: 18px;
+    background: #44cef6;
+    color: #fff2df;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.subhead{
+    font-size: 22px;
+    padding: 10px 5px;
+    display: flex;
+    align-items:center;
+}
+
+.updateTime{
+    font-size: 15px;
+    padding: 5px;
+}
+/*按钮样式*/
+.update_but{
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    background: #0eb83a;
+    padding: 4px 6px;
+    font-size: 14px;
+    color: #ffffff;
+    align-self: center;
+    margin-left: 10px;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.3)inset;
+}
+.update_but:hover{
+    color: #2e4e7e;
+    background: #fff2df;
+}
+
+.UP_Update_log{
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.log_title{
+    padding: 5px;
+
+}
+
+.log_cont{
+    padding: 20px;
+}
