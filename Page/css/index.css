@@ -1,10 +1,15 @@
+@import "el.css";
+
 [v-cloak] {
 display: none;
 }
 
 /*主BOX控制*/
-#UP_main{
+#app{
     width: 100%;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 /*遮罩*/
@@ -30,7 +35,7 @@ display: none;
 }
 
 .title{
-    font-size: 30px;
+    font-size: 25px;
     padding: 5px;
 }
 
@@ -74,6 +79,8 @@ display: none;
 }
 
 .UP_Update_log{
+    width: 75%;
+    min-width: 1000px;
     background: #fff;
     border-radius: 5px;
     padding: 20px;
@@ -86,4 +93,34 @@ display: none;
 
 .log_cont{
     padding: 20px;
+}
+
+.Joe-logo{
+    background: #fff;
+}
+
+.joe_upversion{
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .UP_Update_log{
+        width: 90%;
+        min-width: 0;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .UP_Update_log{
+        width: auto;
+        min-width: 0;
+    }
+    
+    #row{
+        height: 42px;
+        width: 220px;
+        flex-direction: row;
+        position: inherit;
+        margin: 30px;
+    }
 }

@@ -8,7 +8,7 @@ require_once __DIR__ . '/../assets/Depend.php';
  */
 function update()
 {
-    $down_url = 'https://codeload.github.com/HaoOuBa/Joe/zip/master';
+    $down_url = 'https://codeload.github.com/HuangqingGit/HotUpdate/zip/refs/heads/master';
     // $save_path = 'usr/plugins/HotUpdate/down/Joe.zip';
     $save_path = '../down/Hot.zip';
     //下载文件
