@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/assets/depend.php';
 /**
  * HotUpdate 是基于Joe主题的一款热更新插件
  * 
@@ -8,7 +8,6 @@
  * @link https://www.kuckji.cn
  * @version 1.0.0
  */
-require_once __DIR__ . '/assets/Depend.php';
 class HotUpdate_Plugin implements Typecho_Plugin_Interface
 {
     public static $panel = 'HotUpdate/Page/InspectPage.php';

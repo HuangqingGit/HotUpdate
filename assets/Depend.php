@@ -4,6 +4,7 @@ function t(){
     return 'ok';
 }
 require_once __DIR__ . '/Uncompress.php';
+require_once __DIR__ . '/../../../../usr/themes/Joe/core/function.php';
 /**
  * 下载文件
  * @param string $url 要下载的文件地址
@@ -50,10 +51,8 @@ function recurse_copy($src, $dst)
 }
 
 //清空文件夹函数和清空文件夹后删除空文件夹函数的处理
-function deldir($path)
-{
+function deldir($path){
 	$dh = opendir($path);
-	var_dump(readdir($dh));
 	while (($d = readdir($dh)) !== false) {
 		if ($d == '.' || $d == '..') { //如果为.或..
 			continue;
@@ -66,7 +65,27 @@ function deldir($path)
 		}
 	}
 	closedir($dh);
-	rmdir($path);
+	@rmdir($path);
 	return true;
 }
 
+/**
+ * 发起http请求
+ * @param string $req_url 请求地址
+ * @param array $req_data 键值对数据
+ * @return object
+ */
+function send_request($req_url, $req_data)
+{
+    $postdata = http_build_query($req_data);
+    $options = array(
+        'http' => array(
+            'method' => 'GET',
+            'header' => 'Content-type:application/json;charset=UTF-8',
+            'content' => $postdata,
+            'timeout' => 15 * 60 // 超时时间（单位:s）
+        )
+    );
+    $context = stream_context_create($options);
+    return $result = file_get_contents($req_url, false, $context);
+}
