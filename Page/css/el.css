@@ -55,7 +55,7 @@ display: none;
 #row{
     display: flex;
     justify-content: space-around;
-    height: 300px;
+    height: 220px;
     position: absolute;
     flex-direction: column;
     bottom: 30px;
@@ -70,7 +70,7 @@ display: none;
 .el-drawer__header{
     margin: 0;
     padding: 20px;
-    font-size: 24px;
+    font-size: 22px;
     box-shadow: #f0f0f4 0 1px 5px 1px;
     z-index: 1;
 }
@@ -86,4 +86,31 @@ display: none;
     width: 40%;
     direction: ltr; 
     text-align: left;
+}
+
+.hot_log_title{
+    width: 100%;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.drawer_title{
+    width: 100%;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.p1{
+    margin-left: 15px;
+}
+
+.p2{
+    margin-left: 10px;
+    background: #0aa344;
+    border-radius: 5px;
+    padding: 2px 15px;
+    font-size: 15px;
+    color: #fff;
 }

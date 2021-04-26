@@ -15,7 +15,7 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
 
 <body>
     <div id="app">
-        <div id="hotup" v-loading.fullscreen.lock="Loading" type="primary">
+        <div id="hotup" v-loading.fullscreen.lock="Loading" element-loading-text="正在更新 Joe 请勿刷新页面" type="primary">
             <el-dialog class="dialog" title="插件更新通知" :visible.sync="hot_box_show" :before-close="handleClose">
                 <div class="demo-type">
                     <el-avatar :size="60" src="<?php $options->pluginUrl('HotUpdate/Page/img/hot.png'); ?>" @error="errorHandler">
@@ -27,12 +27,12 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
                 <div class="Hotlog">
                     <span class="cont_title">更新内容：</span>
                     <div class="cont_msg">
-                        <el-collapse v-model="activeNames" accordion>
+                        <el-collapse id="new_log" v-model="up_activeNames">
                             <el-collapse-item :title="hot_new_version" name="1">
                                 <div class="el_upmes">
-                                    <div v-for="(list,index) in hot_new_data" :key="index" class="span_a">
+                                    <div v-for="(newmes,index) in hot_new_data" :key="index" class="span_a">
                                         <span>{{index + 1}}.</span>
-                                        <span>{{list.term}}</span>
+                                        <span>{{newmes.term}}</span>
                                     </div>
                                 </div>
                             </el-collapse-item>
@@ -44,12 +44,28 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
                     <el-button type="primary" @click="hot_box_show = false">立即更新</el-button>
                 </span>
             </el-dialog>
-            <el-drawer title="Hot 更新日志" :visible.sync="drawer" direction="rtl">
-                <el-collapse v-model="activeNames">
-                    <el-collapse-item title="一致性 Consistency" name="1">
-                        <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-                    </el-collapse-item>
-                </el-collapse>
+            <el-drawer :visible.sync="drawer" direction="rtl">
+                <div class="drawer_title" slot="title">
+                    <el-avatar :size="50" src="<?php $options->pluginUrl('HotUpdate/Page/img/hot.png'); ?>" @error="errorHandler">
+                        <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
+                    </el-avatar>
+                    <span class="p1">Hot 更新日志</span>
+                    <span class="p2">V {{Version(false)}}</span>
+                </div>
+                <div v-loading="!hot_show" element-loading-text="正在加载" style="height:100%">
+                    <el-collapse id="list_log" v-model="log_activeNames" v-show="hot_show" accordion>
+                        <el-collapse-item v-for="(item,index) in hot_list_data" :key="index" :name='index'>
+                            <div class="hot_log_title" slot="title">
+                                <span>更新日期：{{getLocalTime(item.uptime)}}</span>
+                                <span>V{{item.version}}</span>
+                            </div>
+                            <div v-for="(mes,index) in uni_cn(item.uplog)" :key="index">
+                                <span>{{index + 1}}.</span>
+                                <span>{{mes.term}}</span>
+                            </div>
+                        </el-collapse-item>
+                    </el-collapse>
+                </div>
             </el-drawer>
         </div>
         <div class="UP_title_box">
@@ -71,7 +87,7 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
         </div>
         <div id="row">
             <el-tooltip :disabled="disabled" class="item" effect="dark" content="Hot 更新日志" placement="left">
-                <el-button type="info" icon="iconfont el-icon-rizhi" circle @click="drawer = true"></el-button>
+                <el-button type="info" icon="iconfont el-icon-rizhi" circle @click="get_list_vs()"></el-button>
             </el-tooltip>
             <el-tooltip :disabled="disabled" class="item" effect="dark" content="插件设置" placement="left">
                 <el-button type="primary" icon="iconfont el-icon-tubiao01" circle @click="OpenUrl('options-plugin.php?config=HotUpdate',false)"></el-button>

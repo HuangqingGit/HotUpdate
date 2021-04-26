@@ -10,9 +10,11 @@ $(function () {
             hot_box_show: false,    //插件更新弹窗
             hot_new_data:[],        //插件最新版本数据
             hot_list_data:[],       //插件版本列表数据
-            activeNames: ['1'],     //折叠面板默认显示第一条
+            log_activeNames: 0,     //折叠面板默认显示第一条
+            up_activeNames: ['1'],  //折叠面板默认显示第一条
             Joe_update:'',          //主题更新时间
             Joe_uplog:'',           //主题更新日志
+            hot_show:false,         //版本列表是否显示
             show: true,             //是否显示检测更新
             log: false,             //是否显示更新日志
             znew: false,            //更新按钮样式
@@ -54,6 +56,7 @@ $(function () {
             
             // 获取插件版本列表
             get_list_vs(){
+                this.drawer = true;
                 axios.get('https://port.kuckji.cn', {
                     params: {
                         appid: 'hot_get_list_version',
@@ -63,12 +66,10 @@ $(function () {
                 
                 .then((res)=> {
                     res = res.data;
-                    console.log(res);
-                    // if(!res.data.code){
-                    //     this.hot_box_show = true;
-                    // }else{
-                    //     this.Tips(res.data.mes,'success');
-                    // }
+                    if(!res.code){
+                        this.hot_show = true;
+                        this.hot_list_data = res.data;
+                    }
                 })
             },
             
@@ -110,6 +111,7 @@ $(function () {
                         this.Joe_now_version = this.Joe_new_version;
                         this.Loading = false;
                         this.znew = false;
+                        this.Notice('成功','Joe主题更新成功','success');
                         this.getCollect();
                     }else{
                         this.Loading = false;
@@ -152,6 +154,19 @@ $(function () {
                     return cn;
             },
             
+            // 时间戳解析
+            getLocalTime(ns) {  
+                let now = new Date(ns*1000);
+                let year=now.getFullYear();                                                     //取得4位数的年份
+                let month=now.getMonth()+1;                                                     //取得日期中的月份，其中0表示1月，11表示12月
+                let date=now.getDate() < 10 ? "0" + now.getDate() : now.getDate();              //返回日期月份中的天数（1到31）
+                let hour=now.getHours() < 10 ? "0" + now.getHours() : now.getHours();           //返回日期中的小时数（0到23）
+                let minute=now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();   //返回日期中的分钟数（0到59）
+                let second=now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();   //返回日期中的秒数（0到59）
+                month = month < 10 ? "0" + month : month;
+                return year + "-" + month + "-" + date; 
+            },
+            
             // 本地版本号
             Version(t){
                 if(t){
@@ -191,8 +206,17 @@ $(function () {
             // 提示弹窗
             Tips(mes,type) {
                 this.$message({
-                  message: mes,
-                  type: type
+                    message: mes,
+                    type: type
+                });
+            },
+            
+            // 带有icon 的通知
+            Notice(title,mes,type) {
+                this.$notify({
+                    title: title,
+                    message: mes,
+                    type: type
                 });
             },
             
