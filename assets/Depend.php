@@ -1,7 +1,8 @@
 <?php
 
-function t(){
-    return 'ok';
+function t()
+{
+	return 'ok';
 }
 require_once __DIR__ . '/Uncompress.php';
 require_once __DIR__ . '/../../../../usr/themes/Joe/core/function.php';
@@ -13,7 +14,7 @@ require_once __DIR__ . '/../../../../usr/themes/Joe/core/function.php';
  */
 function downloadFile($url, $path)
 {
-    mkdir('../down',0777,true);
+	mkdir('../down', 0777, true);
 	$newfname = $path;
 	$file = fopen($url, 'rb');
 	if ($file) {
@@ -51,7 +52,8 @@ function recurse_copy($src, $dst)
 }
 
 //清空文件夹函数和清空文件夹后删除空文件夹函数的处理
-function deldir($path){
+function deldir($path)
+{
 	$dh = opendir($path);
 	while (($d = readdir($dh)) !== false) {
 		if ($d == '.' || $d == '..') { //如果为.或..
@@ -77,15 +79,15 @@ function deldir($path){
  */
 function send_request($req_url, $req_data)
 {
-    $postdata = http_build_query($req_data);
-    $options = array(
-        'http' => array(
-            'method' => 'GET',
-            'header' => 'Content-type:application/json;charset=UTF-8',
-            'content' => $postdata,
-            'timeout' => 15 * 60 // 超时时间（单位:s）
-        )
-    );
-    $context = stream_context_create($options);
-    return $result = file_get_contents($req_url, false, $context);
+	$postdata = http_build_query($req_data);
+	$options = array(
+		'http' => array(
+			'method' => 'GET',
+			'header' => 'Content-type:application/json;charset=UTF-8',
+			'content' => $postdata,
+			'timeout' => 15 * 60 // 超时时间（单位:s）
+		)
+	);
+	$context = stream_context_create($options);
+	return $result = file_get_contents($req_url, false, $context);
 }
