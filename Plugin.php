@@ -7,7 +7,7 @@ $V = '18000';
  * @package HotUpdate
  * @author 黄小嘻
  * @link https://www.kuckji.cn
- * @version {$V}
+ * @version 1.0.2
  */
 class HotUpdate_Plugin implements Typecho_Plugin_Interface
 {
