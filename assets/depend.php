@@ -3,7 +3,7 @@
 function t(){
     return 'ok';
 }
-require_once __DIR__ . '/Uncompress.php';
+
 require_once __DIR__ . '/../../../../usr/themes/Joe/core/function.php';
 /**
  * 下载文件

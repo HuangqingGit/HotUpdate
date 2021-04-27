@@ -13,6 +13,7 @@ $(function () {
             log_activeNames: 0,     //折叠面板默认显示第一条
             up_activeNames: ['1'],  //折叠面板默认显示第一条
             Joe_update:'',          //主题更新时间
+            Loading_text:'',        //loading加载时的文字
             Joe_uplog:'',           //主题更新日志
             hot_show:false,         //版本列表是否显示
             show: true,             //是否显示检测更新
@@ -100,8 +101,9 @@ $(function () {
             
             // Joe 更新请求
             Joe_updata(){
+                this.Loading_text = '正在更新 Joe 请勿刷新页面';
                 this.Loading = true;
-                axios.get('../usr/plugins/HotUpdate/assets/update.php')
+                axios.get('../usr/plugins/HotUpdate/assets/Joe_update.php')
                 .then((res)=> {
                     res = res.data;
                     if(!res.code){
@@ -122,18 +124,16 @@ $(function () {
             
             // Hot 更新请求
             Hot_updata(){
+                this.Loading_text = '正在更新 Hotupdate 请勿刷新页面';
                 this.Loading = true;
-                axios.get('../usr/plugins/HotUpdate/assets/update.php')
+                axios.get('../usr/plugins/HotUpdate/assets/Hot_update.php')
                 .then((res)=> {
                     res = res.data;
                     if(!res.code){
-                        let exp = new Date(); 
-                        exp.setTime(exp.getTime() + 60*10*10);
-                        document.cookie = "getJoe=" + escape(this.Joe_new_version) + ";expires=" + exp.toGMTString();
-                        this.Joe_now_version = this.Joe_new_version;
+                        this.hot_now_version = this.hot_new_version;
                         this.Loading = false;
-                        this.znew = false;
-                        this.getCollect();
+                        this.Notice('成功','Hotupdate更新成功','success');
+                        this.hot_box_show = false;
                     }else{
                         this.Loading = false;
                         this.Tips('升级失败 Error code：!' + res.code,'error');
@@ -164,13 +164,13 @@ $(function () {
                 let minute=now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();   //返回日期中的分钟数（0到59）
                 let second=now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();   //返回日期中的秒数（0到59）
                 month = month < 10 ? "0" + month : month;
-                return year + "-" + month + "-" + date; 
+                return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second; 
             },
             
             // 本地版本号
             Version(t){
                 if(t){
-                    return 102;
+                    return 101;
                 }else{
                     return '1.0.2';
                 }

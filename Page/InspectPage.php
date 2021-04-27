@@ -7,7 +7,7 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
 ?>
 
 <link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/Page/css/element.min.css'); ?>">
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_2514219_xib1twmu64m.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_2514219_dwgo6pu3zvb.css">
 <link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/Page/css/index.css'); ?>">
 <script src="<?php $options->pluginUrl('HotUpdate/Page/js/vue.min.js'); ?>"></script>
 <script src="<?php $options->pluginUrl('HotUpdate/Page/js/axios.min.js'); ?>"></script>
@@ -15,10 +15,10 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
 
 <body>
     <div id="app">
-        <div id="hotup" v-loading.fullscreen.lock="Loading" element-loading-text="正在更新 Joe 请勿刷新页面" type="primary">
+        <div id="hotup" v-loading.fullscreen.lock="Loading" :element-loading-text="Loading_text" type="primary" element-loading-background="rgba(255,255,255,0.6)">
             <el-dialog class="dialog" title="插件更新通知" :visible.sync="hot_box_show" :before-close="handleClose">
                 <div class="demo-type">
-                    <el-avatar :size="60" src="<?php $options->pluginUrl('HotUpdate/Page/img/hot.png'); ?>" @error="errorHandler">
+                    <el-avatar class="Hot_logo" :size="60" src="<?php $options->pluginUrl('HotUpdate/Page/img/hot.png'); ?>" @error="errorHandler">
                         <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
                     </el-avatar>
                 </div>
@@ -41,12 +41,12 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
                 </div>
                 <span slot="footer" class="dialog-footer">
                     <el-button @click="hot_box_show = false">暂不更新</el-button>
-                    <el-button type="primary" @click="hot_box_show = false">立即更新</el-button>
+                    <el-button type="primary" @click="Hot_updata()" :loading="Loading">立即更新</el-button>
                 </span>
             </el-dialog>
             <el-drawer :visible.sync="drawer" direction="rtl">
                 <div class="drawer_title" slot="title">
-                    <el-avatar :size="50" src="<?php $options->pluginUrl('HotUpdate/Page/img/hot.png'); ?>" @error="errorHandler">
+                    <el-avatar class="Hot_logo" :size="50" src="<?php $options->pluginUrl('HotUpdate/Page/img/hot.png'); ?>" @error="errorHandler">
                         <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
                     </el-avatar>
                     <span class="p1">Hot 更新日志</span>
@@ -56,10 +56,10 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
                     <el-collapse id="list_log" v-model="log_activeNames" v-show="hot_show" accordion>
                         <el-collapse-item v-for="(item,index) in hot_list_data" :key="index" :name='index'>
                             <div class="hot_log_title" slot="title">
-                                <span>更新日期：{{getLocalTime(item.uptime)}}</span>
+                                <span><i class="iconfont el-icon-gengxinshijian"></i> {{getLocalTime(item.uptime)}}</span>
                                 <span>V{{item.version}}</span>
                             </div>
-                            <div v-for="(mes,index) in uni_cn(item.uplog)" :key="index">
+                            <div class="hot_log_mes" v-for="(mes,index) in uni_cn(item.uplog)" :key="index">
                                 <span>{{index + 1}}.</span>
                                 <span>{{mes.term}}</span>
                             </div>
@@ -97,6 +97,9 @@ setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
             </el-tooltip>
             <el-tooltip :disabled="disabled" class="item" effect="dark" content="去点个Star" placement="left">
                 <el-button type="warning" icon="iconfont el-icon-shoucang1" circle @click="OpenUrl('https://github.com/HuangqingGit/HotUpdate',true)"></el-button>
+            </el-tooltip>
+            <el-tooltip :disabled="disabled" class="item" effect="dark" content="开发者的博客" placement="left">
+                <el-button type="info" icon="iconfont el-icon-wangluo1" circle @click="OpenUrl('https://www.kuckji.cn',true)"></el-button>
             </el-tooltip>
         </div>
     </div>
