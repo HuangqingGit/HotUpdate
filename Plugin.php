@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/assets/depend.php';
+$V = '18000';
 /**
  * HotUpdate 是基于Joe主题的一款热更新插件
  * 
  * @package HotUpdate
  * @author 黄小嘻
  * @link https://www.kuckji.cn
- * @version 1.0.0
+ * @version {$V}
  */
 class HotUpdate_Plugin implements Typecho_Plugin_Interface
 {
