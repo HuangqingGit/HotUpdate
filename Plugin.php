@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/assets/depend.php';
-$V = '18000';
 /**
  * HotUpdate 是基于Joe主题的一款热更新插件
  * 
