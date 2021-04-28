@@ -66,7 +66,7 @@ class HotUpdate_Plugin implements Typecho_Plugin_Interface
             ),
             "del_no",
             _t('是否删除数据库'),
-            "如果开启，将在禁用插件时删除数据库！"
+            "如果开启，将在禁用插件时删除数据库！（默认关闭）该功能暂未开放！"
         );
         $form->addInput($Hot_del_data);
     }

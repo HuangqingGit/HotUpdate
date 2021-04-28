@@ -3,7 +3,8 @@ include_once 'common.php';
 include 'header.php';
 include 'menu.php';
 require_once __DIR__ . '/../assets/depend.php';
-setcookie('getJoe', _getVersion(), time() + 10 * 60, '/admin', '');
+setcookie('Joe_now_version', _getVersion(), time() + 10 * 60, '/admin', '');
+setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
 ?>
 
 <link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/Page/css/element.min.css'); ?>">

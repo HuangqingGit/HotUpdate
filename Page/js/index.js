@@ -24,7 +24,7 @@ $(function () {
             disabled:false,         //是否关闭 tooltip 气泡功能
         },
         mounted() {
-            this.Joe_now_version = this.getCookie('getJoe');
+            this.Joe_now_version = this.getCookie('Joe_now_version');
             this.getCollect();
             this.get_new_vs();
             if(this.isMobile()){
@@ -87,7 +87,7 @@ $(function () {
                         this.show = false;
                         this.log = true;
                         // 判断是否有新版本
-                        if(parseInt(res.title.replace(/\./g,''))>parseInt(this.getCookie('getJoe').replace(/\./g,''))){
+                        if(parseInt(res.title.replace(/\./g,''))>parseInt(this.getCookie('Joe_now_version').replace(/\./g,''))){
                             this.Joe_versions_mes = "发现新版本 "+ this.Joe_new_version;
                             this.znew = true;
                         }else{
@@ -109,11 +109,11 @@ $(function () {
                     if(!res.code){
                         let exp = new Date(); 
                         exp.setTime(exp.getTime() + 60*10*10);
-                        document.cookie = "getJoe=" + escape(this.Joe_new_version) + ";expires=" + exp.toGMTString();
+                        document.cookie = "Joe_now_version=" + escape(this.Joe_new_version) + ";expires=" + exp.toGMTString();
                         this.Joe_now_version = this.Joe_new_version;
                         this.Loading = false;
                         this.znew = false;
-                        this.Notice('成功','Joe主题更新成功','success');
+                        this.Notice('成功','<h4 style="margin: 3px 0">Joe主题更新成功</h4><p>(请按Ctrl + F5刷新缓存)</p>','success');
                         this.getCollect();
                     }else{
                         this.Loading = false;
@@ -130,13 +130,25 @@ $(function () {
                 .then((res)=> {
                     res = res.data;
                     if(!res.code){
+                        this.up_record();
                         this.hot_now_version = this.hot_new_version;
                         this.Loading = false;
-                        this.Notice('成功','Hotupdate更新成功','success');
+                        this.Notice('成功','<h4 style="margin: 3px 0">Hotupdate更新成功</h4><p>(请按Ctrl + F5刷新缓存)</p>','success');
                         this.hot_box_show = false;
                     }else{
                         this.Loading = false;
                         this.Tips('升级失败 Error code：!' + res.code,'error');
+                    }
+                })
+            },
+            
+            // 热更新记录
+            up_record(){
+                axios.get('https://port.kuckji.cn', {
+                    params: {
+                        appid: 'hot_push_log',
+                        secret:'z1I4HMCGqAUWmcQl6Du',
+                        domain_name:this.getCookie('V_domain_name')
                     }
                 })
             },
@@ -215,6 +227,7 @@ $(function () {
             Notice(title,mes,type) {
                 this.$notify({
                     title: title,
+                    dangerouslyUseHTMLString: true,
                     message: mes,
                     type: type
                 });

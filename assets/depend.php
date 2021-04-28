@@ -89,3 +89,12 @@ function send_request($req_url, $req_data)
     $context = stream_context_create($options);
     return $result = file_get_contents($req_url, false, $context);
 }
+
+/**
+ * 主机域名 
+ * @return string
+ */
+function get_host(){
+    $host = $_SERVER['HTTP_HOST']; 
+    return $host;
+}
