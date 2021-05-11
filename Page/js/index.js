@@ -182,9 +182,9 @@ $(function () {
             // 本地版本号
             Version(t){
                 if(t){
-                    return 104;
+                    return 105;
                 }else{
-                    return '1.0.4';
+                    return '1.0.5';
                 }
             },
             

@@ -6,7 +6,7 @@ require_once __DIR__ . '/assets/depend.php';
  * @package HotUpdate
  * @author 黄小嘻
  * @link https://www.kuckji.cn
- * @version 1.0.4
+ * @version 1.0.5
  */
 class HotUpdate_Plugin implements Typecho_Plugin_Interface
 {
