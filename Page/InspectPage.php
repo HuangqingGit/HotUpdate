@@ -106,4 +106,6 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
     </div>
 </body>
 
+<?php include 'common-js.php'; ?>
+<?php include 'footer.php'; ?>
 <script src="<?php $options->pluginUrl('HotUpdate/Page/js/index.js'); ?>"></script>
