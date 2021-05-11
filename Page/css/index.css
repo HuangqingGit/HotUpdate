@@ -76,11 +76,15 @@ display: none;
     color: #2e4e7e;
     background: #fff2df;
 }
+.Up_to_log_bk{
+    background: #fff;
+    border-radius: 7px;
+}
 
 .UP_Update_log{
     width: 75%;
     min-width: 1000px;
-    background: #fff;
+    background: var(--backgroundA);
     border-radius: 5px;
     padding: 20px;
 }

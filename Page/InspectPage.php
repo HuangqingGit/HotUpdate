@@ -81,13 +81,15 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
                         <span class="subhead loading" v-if="show">正在获取更新 · · ·</span>
                         <span class="subhead" v-if="log" :style="{'color':znew ? '#ff461f':'#00bc12'}">{{Joe_versions_mes}}<span @click="Joe_updata()" v-if="znew" class="update_but" title="更新Joe主题">立即更新</span></span>
                     </div>
-                    <div class="UP_Update_log">
-                        <div class="log_title">
-                            <span class="loading" v-if="show">正在获取更新日志 · · ·</span>
-                            <span class="subhead" v-show="log">Joe更新日志：<span class="now_version"></span></span>
-                            <span class="updateTime" v-if="log">更新时间：{{Joe_update}}</span>
+                    <div class="Up_to_log_bk">
+                        <div class="UP_Update_log">
+                            <div class="log_title">
+                                <span class="loading" v-if="show">正在获取更新日志 · · ·</span>
+                                <span class="subhead" v-show="log">Joe更新日志：<span class="now_version"></span></span>
+                                <span class="updateTime" v-if="log">更新时间：{{Joe_update}}</span>
+                            </div>
+                            <div class="log_cont" v-html="Joe_uplog"></div>
                         </div>
-                        <div class="log_cont" v-html="Joe_uplog"></div>
                     </div>
                     <div id="row">
                         <el-tooltip :disabled="disabled" class="item" effect="dark" content="Hot 更新日志" placement="left">
