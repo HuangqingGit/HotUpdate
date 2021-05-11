@@ -14,8 +14,10 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
 <script src="<?php $options->pluginUrl('HotUpdate/Page/js/axios.min.js'); ?>"></script>
 <script src="<?php $options->pluginUrl('HotUpdate/Page/js/element.min.js'); ?>"></script>
 
-<body>
-    <div id="app">
+<div class="main">
+    <div class="body container">
+        <div class="row typecho-page-main" role="form">
+			<div id="app">
         <div id="hotup" v-loading.fullscreen.lock="Loading" :element-loading-text="Loading_text" type="primary" element-loading-background="rgba(255,255,255,0.6)">
             <el-dialog class="dialog" title="插件更新通知" :visible.sync="hot_box_show" :before-close="handleClose">
                 <div class="demo-type">
@@ -104,8 +106,9 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
             </el-tooltip>
         </div>
     </div>
-</body>
-
+        </div>
+    </div>
+</div>
 <?php include 'common-js.php'; ?>
 <?php include 'footer.php'; ?>
 <script src="<?php $options->pluginUrl('HotUpdate/Page/js/index.js'); ?>"></script>
