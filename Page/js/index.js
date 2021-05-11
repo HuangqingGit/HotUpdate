@@ -76,7 +76,7 @@ $(function () {
             
             // 获取主题新版本
             getCollect(){
-                axios.get('https://as.js.cn/qqshoucang.php/?key=18e958d8c7fa5d435844f95c9f254fca')
+                axios.get('https://78.al/api.php?type=collect&key=18e958d8c7fa5d435844f95c9f254fca')
                 .then((res)=> {
                     res = res.data;
                     if(res.success){
@@ -182,9 +182,9 @@ $(function () {
             // 本地版本号
             Version(t){
                 if(t){
-                    return 103;
+                    return 104;
                 }else{
-                    return '1.0.3';
+                    return '1.0.4';
                 }
             },
             
