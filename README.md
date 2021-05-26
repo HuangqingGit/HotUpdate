@@ -1,6 +1,6 @@
 # HotUpdate
-## HotUpdate 是基于Joe主题的一款热更新插件 
-## 插件由[黄小嘻](https://www.kuckji.cn)独立开发
+### HotUpdate 是基于Joe主题的一款热更新插件 
+### 插件由[黄小嘻](https://www.kuckji.cn)独立开发
 
 # json表说明
 
