@@ -7,12 +7,12 @@ setcookie('Joe_now_version', _getVersion(), time() + 10 * 60, '/admin', '');
 setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
 ?>
 
-<link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/Page/css/element.min.css'); ?>">
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_2514219_dwgo6pu3zvb.css">
+<link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/assets/css/element.min.css'); ?>">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_2514219_qn4kp7anmcf.css">
 <link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/Page/css/index.css'); ?>">
-<script src="<?php $options->pluginUrl('HotUpdate/Page/js/vue.min.js'); ?>"></script>
-<script src="<?php $options->pluginUrl('HotUpdate/Page/js/axios.min.js'); ?>"></script>
-<script src="<?php $options->pluginUrl('HotUpdate/Page/js/element.min.js'); ?>"></script>
+<script src="<?php $options->pluginUrl('HotUpdate/assets/js/vue.min.js'); ?>"></script>
+<script src="<?php $options->pluginUrl('HotUpdate/assets/js/axios.min.js'); ?>"></script>
+<script src="<?php $options->pluginUrl('HotUpdate/assets/js/element.min.js'); ?>"></script>
 
 <body>
     <div class="main">
@@ -54,7 +54,7 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
                                     <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
                                 </el-avatar>
                                 <span class="p1">Hot 更新日志</span>
-                                <span class="p2">V {{Version(false)}}</span>
+                                <span class="p2">V {{config.Version}}</span>
                             </div>
                             <div v-loading="!hot_show" element-loading-text="正在加载" style="height:100%">
                                 <el-collapse id="list_log" v-model="log_activeNames" v-show="hot_show" accordion>
@@ -93,19 +93,19 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
                     </div>
                     <div id="row">
                         <el-tooltip :disabled="disabled" class="item" effect="dark" content="Hot 更新日志" placement="left">
-                            <el-button type="info" icon="iconfont el-icon-rizhi" circle @click="get_list_vs()"></el-button>
+                            <el-button type="info" icon="iconfont ali-icon-rizhi" circle @click="get_list_vs()"></el-button>
                         </el-tooltip>
                         <el-tooltip :disabled="disabled" class="item" effect="dark" content="插件设置" placement="left">
-                            <el-button type="primary" icon="iconfont el-icon-tubiao01" circle @click="OpenUrl('options-plugin.php?config=HotUpdate',false)"></el-button>
+                            <el-button type="primary" icon="iconfont ali-icon-tubiao01" circle @click="OpenUrl('options-plugin.php?config=HotUpdate&sign=true',false)"></el-button>
                         </el-tooltip>
                         <el-tooltip :disabled="disabled" class="item" effect="dark" content="联系作者" placement="left">
-                            <el-button type="success" icon="iconfont el-icon-QQ" circle @click="OpenUrl('http://wpa.qq.com/msgrd?v=3&uin=1666385076&site=qq&menu=yes',true)"></el-button>
+                            <el-button type="success" icon="iconfont ali-icon-QQ" circle @click="OpenUrl('http://wpa.qq.com/msgrd?v=3&uin=1666385076&site=qq&menu=yes',true)"></el-button>
                         </el-tooltip>
                         <el-tooltip :disabled="disabled" class="item" effect="dark" content="去点个Star" placement="left">
-                            <el-button type="warning" icon="iconfont el-icon-shoucang1" circle @click="OpenUrl('https://github.com/HuangqingGit/HotUpdate',true)"></el-button>
+                            <el-button type="warning" icon="iconfont ali-icon-shoucang1" circle @click="OpenUrl('https://github.com/HuangqingGit/HotUpdate',true)"></el-button>
                         </el-tooltip>
                         <el-tooltip :disabled="disabled" class="item" effect="dark" content="开发者的博客" placement="left">
-                            <el-button type="info" icon="iconfont el-icon-wangluo1" circle @click="OpenUrl('https://www.kuckji.cn',true)"></el-button>
+                            <el-button type="info" icon="iconfont ali-icon-wangluo1" circle @click="OpenUrl('https://www.kuckji.cn',true)"></el-button>
                         </el-tooltip>
                     </div>
                 </div>
@@ -116,4 +116,4 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
 
 <?php include 'common-js.php'; ?>
 <?php include 'footer.php'; ?>
-<script src="<?php $options->pluginUrl('HotUpdate/Page/js/index.js'); ?>"></script>
+<script src="<?php $options->pluginUrl('HotUpdate/Page/js/index.min.js'); ?>"></script>

@@ -34,7 +34,7 @@ function downloadFile($url, $path)
 }
 
 function recurse_copy($src, $dst)
-{ // 原目录，复bai制到的目du录
+{ // 原目录，复制到的目录
 	$dir = opendir($src);
 	@mkdir($dst);
 	while (false !== ($file = readdir($dir))) {
@@ -88,6 +88,15 @@ function send_request($req_url, $req_data)
     );
     $context = stream_context_create($options);
     return $result = file_get_contents($req_url, false, $context);
+}
+/**
+ * 读取本地表单数据
+ * @return object
+ */
+function get_forms(){
+    $djson = file_get_contents(__DIR__ . '/js/json/forms.json');
+    $data = json_decode($djson, true); 
+    return $data;
 }
 
 /**

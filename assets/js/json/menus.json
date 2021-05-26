@@ -1,0 +1,39 @@
+[
+    {
+        "type":"two_menu",
+        "class":"Basic",
+        "title":"基础设置",
+        "color":"#02a9f1",
+        "icon":"ali-icon-tubiao01",
+        "menus":[
+            {"title":"AA","name":"AA"},
+            {"title":"GG","name":"GG"},
+            {"title":"HH","name":"HH"},
+            {"title":"TT","name":"TT"},
+            {"title":"UU","name":"UU"},
+            {"title":"FF","name":"FF"}
+        ]
+    },
+    {
+        "type":"two_menu",
+        "class":"Protect",
+        "title":"更新保护",
+        "color":"#63ba4d",
+        "icon":"ali-icon-wenjianbaohu",
+        "menus":[
+            {"title":"AA","name":"AA"},
+            {"title":"GG","name":"GG"},
+            {"title":"HH","name":"HH"},
+            {"title":"TT","name":"TT"},
+            {"title":"UU","name":"UU"},
+            {"title":"FF","name":"FF"}
+        ]
+    },
+    {
+        "type":"one_menu",
+        "class":"About",
+        "title":"关于Hot",
+        "color":"#f4ea2a",
+        "icon": "ali-icon-rizhi"
+    }
+]

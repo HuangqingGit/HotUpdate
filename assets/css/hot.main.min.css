@@ -1,0 +1,17 @@
+#hot_form .hot_main_ul{
+    margin-bottom: 30px;
+}
+
+#hot_form .typecho-label{
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--main);
+}
+
+#hot_form .form-control{
+    /*margin: 7px 0;*/
+}
+
+#hot_form .description{
+    padding: 5px 0;
+}

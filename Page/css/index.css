@@ -1,9 +1,4 @@
 @import "el.css";
-
-[v-cloak] {
-display: none;
-}
-
 /*主BOX控制*/
 #app{
     width: 100%;
