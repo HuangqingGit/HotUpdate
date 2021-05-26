@@ -7,6 +7,7 @@
 <script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/vue.min.js"></script>
 <script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/axios.min.js"></script>
 <script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/element.min.js"></script>
+
 <body>
     <div id="hot" v-cloak>
         <el-container id="hot_container_main">
@@ -22,56 +23,42 @@
                 </div>
             </el-header>
             <!--heder end-->
-            
+
             <el-container id="hot_container" style="height:0px">
                 <!--menu start-->
                 <el-aside id="hot_aside" :width='menu_fold ? "64px" : "200px"'>
-                    <el-menu 
-                    id="menus" 
-                    :width='menu_fold ? "64px" : "200px"'
-                    :default-active="def_active"
-                    :collapse="menu_fold"
-                    class="el-menu-vertical-demo" 
-                    @open="handleOpen"
-                    unique-opened=true
-                    text-color="var(--main)">
+                    <el-menu id="menus" :width='menu_fold ? "64px" : "200px"' :default-active="def_active" :collapse="menu_fold" class="el-menu-vertical-demo" @open="handleOpen" unique-opened=true text-color="var(--main)">
                         <span class="fold_box">
                             <div class="menu_fold iconfont" :class="menu_fold ? 'ali-icon-zhedie2':'ali-icon-shouqi'" @click="menu_fold=!menu_fold"></div>
                         </span>
-                            <el-submenu v-for="(item, index) in menus" :key="index" v-if="item.type=='two_menu'"  :index="item.class">
-                                <template slot="title">
-                                    <i class="iconfont itemicon" :class="item.icon" :style="`color:${item.color}`"></i>
-                                    <span slot="title">{{item.title}}</span>
-                                </template>
-                                <el-menu-item v-for="(list, i) in item.menus" :index="`${item.class}-${i}`" @click="anchor(list.name,item.class)">{{list.title}}</el-menu-item>
-                            </el-submenu>
-                            
-                            <el-menu-item v-for="(item, index) in menus" @click="form_other_click(item.class)" :key="index" v-if="item.type=='one_menu'" :index="item.class">
+                        <el-submenu v-for="(item, index) in menus" :key="index" v-if="item.type=='two_menu'" :index="item.class">
+                            <template slot="title">
                                 <i class="iconfont itemicon" :class="item.icon" :style="`color:${item.color}`"></i>
                                 <span slot="title">{{item.title}}</span>
-                            </el-menu-item>
+                            </template>
+                            <el-menu-item v-for="(list, i) in item.menus" :index="`${item.class}-${i}`" @click="anchor(list.name,item.class)">{{list.title}}</el-menu-item>
+                        </el-submenu>
+
+                        <el-menu-item v-for="(item, index) in menus" @click="form_other_click(item.class)" :key="index" v-if="item.type=='one_menu'" :index="item.class">
+                            <i class="iconfont itemicon" :class="item.icon" :style="`color:${item.color}`"></i>
+                            <span slot="title">{{item.title}}</span>
+                        </el-menu-item>
                     </el-menu>
                 </el-aside>
                 <!--menu end-->
-                
+
                 <!--Main start-->
                 <el-main id="hot_main" class="hot_main">
                     <div class="form_other About">
                         其他内容1
                     </div>
-                    <div class="form_other BBB">
-                        其他内容2
-                    </div>
-                    <div class="form_other CCC">
-                        其他内容3
-                    </div>
                 </el-main>
                 <!--Main end-->
             </el-container>
-            
+
             <!--Footer start-->
             <el-footer id="hot_footer" height="35px">
-                <div class="hot_foot_left">V {{config.Version}}</div>
+                <div class="hot_foot_left"><span class="dq_text">当前版本</span>V {{config.Version}}</div>
                 <div class="hot_foot_core">©<span @click="OpenUrl('https://kuckji.cn',true)">酷创空间</span></div>
                 <div class="hot_foot_right">
                     <el-button size="mini" @click="hot_Submit_form" type="primary" icon="iconfont ali-icon-baocun1" title="使用Ctrl+S快速保存"> 保存设置</el-button>
@@ -130,12 +117,12 @@ class HotUpdate_Plugin implements Typecho_Plugin_Interface
      * @return void
      */
     public static function config(Typecho_Widget_Helper_Form $form)
-    {   
+    {
         $json = get_forms();
-        if(count($json)){
-            foreach($json as $key => $value){
+        if (count($json)) {
+            foreach ($json as $key => $value) {
                 $cen = $value['content'];
-                switch($value['type']){
+                switch ($value['type']) {
                     case "Text":    //input输入框
                         $li_form = new Typecho_Widget_Helper_Form_Element_Text($value['name'], $cen['array'], $cen['value'], $cen['title'], $cen['explain']);
                         break;
