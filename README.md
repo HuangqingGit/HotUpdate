@@ -1,10 +1,10 @@
 # HotUpdate
-### HotUpdate 是基于Joe主题的一款热更新插件 
-### 插件由[黄小嘻](https://www.kuckji.cn)独立开发
+##### HotUpdate 是基于Joe主题的一款热更新插件 
+##### 插件由[黄小嘻](https://www.kuckji.cn)独立开发
 
 # json表说明
 
-## forms.json 表单数据格式说明
+#### forms.json 表单数据格式说明
 
     "type": "表类型：Text|Password|Radio|Select|Checkbox|Textarea   首字母必须大写",
     "name": "给表定义的唯一 ID 不可重复",
@@ -17,7 +17,7 @@
     }
 
 
-## menus.json 表单数据格式说明
+#### menus.json 表单数据格式说明
 
     "type":"one_menu|two_menu 目前就两种一及和二级",
     "class":"分类定义 须与 forms.json 表中的 class 一致",
