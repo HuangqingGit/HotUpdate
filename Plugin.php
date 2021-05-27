@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_2514219_why3sgcs04.css">
-<script type="text/javascript" src="https://js.cxwt.xyz/jquery_min_3.4.1.js"></script>
 <link rel="stylesheet" href="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/css/element.min.css">
 <link rel="stylesheet" href="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/css/el.min.css">
 <link rel="stylesheet" href="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/css/Plugin.setting.min.css">
 <link rel="stylesheet" href="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/css/hot.main.min.css">
+<script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/vue.min.js"></script>
 <script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/axios.min.js"></script>
 <script type="text/javascript" src="<?php echo Helper::options()->rootUrl ?>/usr/plugins/HotUpdate/assets/js/element.min.js"></script>

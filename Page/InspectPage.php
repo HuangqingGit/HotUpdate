@@ -10,6 +10,7 @@ setcookie('V_domain_name', get_host(), time() + 10 * 60, '/admin', '');
 <link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/assets/css/element.min.css'); ?>">
 <link rel="stylesheet" href="https://at.alicdn.com/t/font_2514219_qn4kp7anmcf.css">
 <link rel="stylesheet" href="<?php $options->pluginUrl('HotUpdate/Page/css/index.css'); ?>">
+<script src="<?php $options->pluginUrl('HotUpdate/assets/js/HotUpdate/assets/js/jquery-3.6.0.min.js'); ?>"></script>
 <script src="<?php $options->pluginUrl('HotUpdate/assets/js/vue.min.js'); ?>"></script>
 <script src="<?php $options->pluginUrl('HotUpdate/assets/js/axios.min.js'); ?>"></script>
 <script src="<?php $options->pluginUrl('HotUpdate/assets/js/element.min.js'); ?>"></script>
